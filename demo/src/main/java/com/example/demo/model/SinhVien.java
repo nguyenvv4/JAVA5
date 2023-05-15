@@ -12,4 +12,10 @@ public class SinhVien {
     private Integer id;
 
     private String hoTen;
+
+    private Integer tuoi;
+
+    private String diaChi;
+
+    private Integer gioiTinh;
 }
