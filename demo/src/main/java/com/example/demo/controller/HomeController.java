@@ -77,8 +77,8 @@ public class HomeController {
                          @RequestParam("tuoi") Integer tuoi,
                          @RequestParam("diaChi") String diaChi) {
 
-        for (SinhVien sinhVien :listSinhVien){
-            if (sinhVien.getId() == id){
+        for (SinhVien sinhVien : listSinhVien) {
+            if (sinhVien.getId() == id) {
                 sinhVien.setDiaChi(diaChi);
                 sinhVien.setTuoi(tuoi);
                 sinhVien.setHoTen(hoTen);
@@ -86,6 +86,20 @@ public class HomeController {
         }
 
         return "redirect:/sinh-vien/hien-thi";
+    }
+
+    @PostMapping("/search")
+    public String search(Model model,
+                         @RequestParam("hoTen") String hoTen) {
+        ArrayList<SinhVien> listSinhVienSearch = new ArrayList<>();
+        for (SinhVien sinhVien : listSinhVien) {
+            if (sinhVien.getHoTen().contains(hoTen)) {
+                listSinhVienSearch.add(sinhVien);
+            }
+        }
+        model.addAttribute("listSinhVien",listSinhVienSearch);
+
+        return "index";
     }
 
 }

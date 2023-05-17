@@ -19,18 +19,14 @@
 </head>
 <body>
 
-<form action="/sinh-vien/them" method="post" class="container">
-    <div class="mb-3">
-        <label  class="form-label">ID</label>
-        <input type="text" class="form-control" name="id">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
+<form action="/sinh-vien/search" method="post" class="container">
+
     <div class="mb-3">
         <label class="form-label">Ho Ten</label>
         <input type="text" class="form-control" name="hoTen">
     </div>
 
-    <button type="submit" class="btn btn-primary">Them</button>
+    <button type="submit" class="btn btn-primary">Search</button>
 </form>
 <table class="table">
     <thead>
