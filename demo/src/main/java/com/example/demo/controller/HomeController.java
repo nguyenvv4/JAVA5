@@ -26,14 +26,14 @@ public class HomeController {
         return "index";
     }
 
-//    @GetMapping("/them")
-//    public String them(Model model,
-//                      @RequestParam("id") Integer id) {
-//
+    @PostMapping("/them")
+    public String them(Model model,
+                       @RequestParam("id") Integer id) {
+        System.out.println("id la: " + id);
 //      listSinhVien.add(new SinhVien(id,))
 //        model.addAttribute("listSinhVien", listSinhVien);
-//        return "index";
-//    }
+        return "redirect:/sinh-vien/hien-thi";
+    }
 
     @GetMapping("/xoa")
     public String xoa(Model model,
@@ -43,4 +43,49 @@ public class HomeController {
         model.addAttribute("listSinhVien", listSinhVien);
         return "redirect:/sinh-vien/hien-thi";
     }
+
+    //cach 1
+//    @GetMapping("/detail")
+//    public String detail(Model model,
+//                         @RequestParam("id") Integer id) {
+//        System.out.println("id la: " + id);
+//        for (SinhVien sinhVien : listSinhVien) {
+//            if (sinhVien.getId() == id) {
+//                model.addAttribute("sinhVien", sinhVien);
+//            }
+//        }
+//        return "detail";
+//    }
+
+    //cach 2
+    @GetMapping("/detail/{id}")
+    public String detail(Model model,
+                         @PathVariable("id") Integer id) {
+        System.out.println("id la: " + id);
+        for (SinhVien sinhVien : listSinhVien) {
+            if (sinhVien.getId() == id) {
+                model.addAttribute("sinhVien", sinhVien);
+            }
+        }
+        return "detail";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(Model model,
+                         @PathVariable("id") Integer id,
+                         @RequestParam("hoTen") String hoTen,
+                         @RequestParam("tuoi") Integer tuoi,
+                         @RequestParam("diaChi") String diaChi) {
+
+        for (SinhVien sinhVien :listSinhVien){
+            if (sinhVien.getId() == id){
+                sinhVien.setDiaChi(diaChi);
+                sinhVien.setTuoi(tuoi);
+                sinhVien.setHoTen(hoTen);
+            }
+        }
+
+        return "redirect:/sinh-vien/hien-thi";
+    }
+
 }
