@@ -20,6 +20,7 @@ public class SpringFormController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         System.out.println(user.toString());
-        return "redirect:/userList";
+        // in ra được thông tin user thì đúng  :)))
+        return "spring-form";
     }
 }
