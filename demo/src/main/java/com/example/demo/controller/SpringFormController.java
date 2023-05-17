@@ -21,6 +21,8 @@ public class SpringFormController {
     public String saveUser(@ModelAttribute("user") User user) {
         System.out.println(user.toString());
         // in ra được thông tin user thì đúng  :)))
+        // spring form phải đảm bảo path phải là thuôộc tính của đối tượng
+        // ModelAttribute của jsp và controller phải là 1
         return "spring-form";
     }
 }
