@@ -1,6 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.MauSac;
+import com.example.demo.model.NhanVien;
 import com.example.demo.model.SinhVien;
+import com.example.demo.repository.MauSacRepository;
+import com.example.demo.repository.NhanVienRepository;
+import com.example.demo.service.SinhVienService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +19,17 @@ public class HomeController {
 
     ArrayList<SinhVien> listSinhVien = new ArrayList<>();
 
+//    SinhVienService sinhVienService = new SinhVienServiceImpl();
+    @Autowired
+    SinhVienService sinhVienService;
+
+    @Autowired
+    NhanVienRepository nhanVienRepository;
+
+
+    @Autowired
+    private MauSacRepository mauSacRepository;
+
     public HomeController() {
         listSinhVien.add(new SinhVien(1, "Nguyen Van A", 20, "Thanh Hoa", 1));
         listSinhVien.add(new SinhVien(2, "Nguyen Van B", 20, "Nghe An", 0));
@@ -22,7 +39,9 @@ public class HomeController {
 
     @GetMapping("/hien-thi")
     public String hienThi(Model model) {
-        model.addAttribute("listSinhVien", listSinhVien);
+//        model.addAttribute("listSinhVien", listSinhVien);
+        ArrayList<NhanVien> list = (ArrayList<NhanVien>) nhanVienRepository.findAll();
+        System.out.println(list.get(0).toString());
         return "index";
     }
 
