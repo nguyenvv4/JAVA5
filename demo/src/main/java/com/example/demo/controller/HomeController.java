@@ -41,7 +41,10 @@ public class HomeController {
     public String hienThi(Model model) {
 //        model.addAttribute("listSinhVien", listSinhVien);
         ArrayList<NhanVien> list = (ArrayList<NhanVien>) nhanVienRepository.findAll();
-        System.out.println(list.get(0).toString());
+        for (NhanVien nhanVien: list){
+
+        }
+        System.out.println(list.size());
         return "index";
     }
 

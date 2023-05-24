@@ -21,31 +21,31 @@ public class NhanVien {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "Ma")
+    @Column(name = "ma")
     private String ma;
 
-    @Column(name = "Ten")
+    @Column(name = "ten")
     private String ten;
 
-    @Column(name = "TenDem")
+    @Column(name = "ten_dem")
     private String tenDem;
 
-    @Column(name = "Ho")
+    @Column(name = "ho")
     private String ho;
 
-    @Column(name = "GioiTinh")
+    @Column(name = "gioi_tinh")
     private String gioiTinh;
 
-    @Column(name = "NgaySinh")
+    @Column(name = "ngay_sinh")
     private Date ngaySinh;
 
-    @Column(name = "DiaChi")
+    @Column(name = "dia_chi")
     private String diaChi;
 
-    @Column(name = "Sdt")
+    @Column(name = "sdt")
     private String sdt;
 
-    @Column(name = "MatKhau")
+    @Column(name = "mat_khau")
     private String matKhau;
 
 //    @ManyToOne
@@ -60,6 +60,6 @@ public class NhanVien {
 //    @JoinColumn(name = "IdGuiBC")
 //    private NhanVien baoCao;
 
-    @Column(name = "TrangThai")
+    @Column(name = "trang_thai")
     private int trangThai;
 }
