@@ -40,11 +40,8 @@ public class HomeController {
     @GetMapping("/hien-thi")
     public String hienThi(Model model) {
 //        model.addAttribute("listSinhVien", listSinhVien);
-        ArrayList<NhanVien> list = (ArrayList<NhanVien>) nhanVienRepository.findAll();
-        for (NhanVien nhanVien: list){
 
-        }
-        System.out.println(list.size());
+
         return "index";
     }
 

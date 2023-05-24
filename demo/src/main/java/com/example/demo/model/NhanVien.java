@@ -13,6 +13,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class NhanVien {
 
     @Id
@@ -62,4 +63,6 @@ public class NhanVien {
 
     @Column(name = "trang_thai")
     private int trangThai;
+
+
 }
