@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.MauSac;
-import com.example.demo.model.NhanVien;
 import com.example.demo.model.SinhVien;
 import com.example.demo.repository.MauSacRepository;
 import com.example.demo.repository.NhanVienRepository;

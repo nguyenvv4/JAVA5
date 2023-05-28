@@ -19,15 +19,22 @@
 </head>
 <body>
 
-<%--<form action="/sinh-vien/search" method="post" class="container">--%>
+<form action="/nhan-vien/them" method="post" class="container">
 
-<%--    <div class="mb-3">--%>
-<%--        <label class="form-label">Ho Ten</label>--%>
-<%--        <input type="text" class="form-control" name="hoTen">--%>
-<%--    </div>--%>
-
-<%--    <button type="submit" class="btn btn-primary">Search</button>--%>
-<%--</form>--%>
+    <div class="mb-3">
+        <label class="form-label">Ho Ten</label>
+        <input type="text" class="form-control" name="hoTen">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Chức vụ</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="chucVu">
+            <c:forEach items="${listChucVu}" var="chucVu">
+            <option value="${chucVu.id}">${chucVu.ten}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 <h2 style="align: center">Danh sách nhân viên</h2>
 <table class="table">
     <thead>
@@ -41,6 +48,8 @@
         <td>Ngày Sinh</td>
         <td>Địa chỉ</td>
         <td>Sđt</td>
+        <td>Tên chức vụ</td>
+        <td>Mã chức vụ</td>
         <td>Mật khẩu</td>
         <td>Trạng thái</td>
         <td>Action</td>
@@ -58,6 +67,8 @@
                 <td>${nhanVien.ngaySinh}</td>
                 <td>${nhanVien.diaChi}</td>
                 <td>${nhanVien.sdt}</td>
+                <td>${nhanVien.chucVu.ten}</td>
+                <td>${nhanVien.chucVu.ma}</td>
                 <td>${nhanVien.matKhau}</td>
                 <td>${nhanVien.trangThai}</td>
                 <td>
