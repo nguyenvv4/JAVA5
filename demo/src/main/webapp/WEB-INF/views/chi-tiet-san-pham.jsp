@@ -42,6 +42,6 @@
     </tbody>
 
 </table>
-<a href="/cart/add1" class="btn btn-primary"> Xem giỏ hàng session</a>
+<a href="/cart/view" class="btn btn-primary"> Xem giỏ hàng session</a>
 </body>
 </html>
