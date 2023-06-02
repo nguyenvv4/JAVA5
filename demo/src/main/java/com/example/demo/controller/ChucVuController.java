@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -20,9 +22,18 @@ public class ChucVuController {
     @GetMapping("/hien-thi")
     public String hienThi(Model model) {
         ArrayList<ChucVu> list = chucVuService.getAll();
-        for (ChucVu chucVu:list){
-            System.out.println(chucVu.toString());
-        }
-        return null;
+        model.addAttribute("chucVus", list);
+        return "chuc-vu";
+    }
+
+    @PostMapping("/them")
+    public String them(Model model,
+                       @RequestParam("ma") String ma,
+                       @RequestParam("ten") String ten) {
+        ChucVu chucVu = new ChucVu();
+        chucVu.setMa(ma);
+        chucVu.setTen(ten);
+        chucVuService.addNew(chucVu);
+        return "redirect:/chuc-vu/hien-thi";
     }
 }

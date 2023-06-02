@@ -13,14 +13,6 @@ public class HoaDonChiTiet {
     @EmbeddedId
     private IdHoaDonChiTiet id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "id_chi_tiet_sp")
-//    private ChiTietSanPham chiTietSanPham;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "id_hoa_don")
-//    private HoaDon hoaDon;
-
     private Integer soLuong;
 
     private Long donGia;
