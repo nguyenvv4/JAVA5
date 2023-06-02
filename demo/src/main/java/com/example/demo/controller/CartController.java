@@ -26,13 +26,17 @@ public class CartController {
 
     @GetMapping("/cart/add")
     public String addToCart(@RequestParam("ctspId") UUID ctspId) {
+        // lấy ctsp từ repo
         Optional<ChiTietSanPham> chiTietSanPham = chiTietSanPhamRepository.findById(ctspId);
+        // tạo ra giỏ hàng chi tiết
         Item item = new Item(chiTietSanPham.get().getId(),
                 chiTietSanPham.get().getSanPham().getTen(),
                 chiTietSanPham.get().getMauSac().getTen(),
                 1,
                 chiTietSanPham.get().getGiaBan());
+        //lấy gior hàng từ session
         Cart cartSesion = (Cart) httpSession.getAttribute("cart");
+        // nếu chưa có giỏ hàng
         if (cartSesion == null) {
             Cart cart = new Cart();
             ArrayList<Item> list = new ArrayList<>();
@@ -40,14 +44,18 @@ public class CartController {
             cart.setItems(list);
             httpSession.setAttribute("cart", cart);
         } else {
+            // nếu có giỏ hàng
             Cart cart = (Cart) httpSession.getAttribute("cart");
             ArrayList<Item> listItem = cart.getItems();
+            // kieemr tra sản phẩm đã có trong giỏ hàng chưa
+            // nếu có thì tăng số lwonjg lên 1
             for (Item itemTmp : listItem) {
                 if (itemTmp.getIdCtsp().equals(ctspId)) {
                     itemTmp.setSoLuong(item.getSoLuong() + 1);
                     return "redirect:/chi-tiet-san-pham/hien-thi";
                 }
             }
+            // không có thì thêm sản phẩm vào
             listItem.add(item);
         }
         return "redirect:/chi-tiet-san-pham/hien-thi";
